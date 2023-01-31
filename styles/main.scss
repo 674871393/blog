@@ -1,0 +1,35 @@
+/* 格式化会导致dark失效 */
+body {
+  @apply bg-#fff font-sans text-gray-700 dark:text-gray-200 dark:bg-#050505;
+  ;
+}
+
+.icon {
+  @apply opacity-60 duration-300 hover: opacity-100;
+}
+
+.blog-content pre {
+  @apply bg-#f8f8f8 py-3 px-4 dark:bg-#121212;
+}
+
+/* 设置浏览器滚动条的样式 */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 0, 0, 0.4);
+}
