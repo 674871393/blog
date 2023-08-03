@@ -13,7 +13,8 @@ const catalogue = [
 ]
 const route = useRoute()
 const docs = await queryContent().where({ categories: route.path.slice(1) }).find()
-const list: IDoc[] = _(docs).groupBy(x => dayjs(x.date).get('year')).map((list, date) => ({ date, list })).value()
+const list: IDoc[] = _(docs).groupBy(x => dayjs(x.date).get('year')).map((list, date) => ({ date, list })).sort((a,b)=>dayjs(b.date).valueOf() - dayjs(a.date).valueOf()).value()
+
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const list: IDoc[] = _(docs).groupBy(x => dayjs(x.date).get('year')).map((list, 
     <article>
       <ul v-for="(articles, idx) of list" :key="idx">
         <div relative h20 pointer-events-none>
-          <span text-8em op10 absolute left--3rem top--2rem font-bold>{{ articles.date }}</span>
+          <span  text-8em color-transparent absolute left--1.5rem sm:left--3rem top--2rem font-bold text-stroke-2 text-stroke-hex-aaa op10>{{ articles.date }}</span>
         </div>
         <NuxtLink
           v-for="article in articles.list" :key="article._path"
